@@ -1,14 +1,14 @@
-import {FaUser, FaLock} from 'react-icons/fa';
+import {FaUser, FaLock, FaEye, FaEyeSlash} from 'react-icons/fa';
 
 import { useState } from 'react';
 
 import './Login.css';
 const Login = () => {
-
-
-
     const [userName,setUserName] =  useState ("");
     const [password, setPassword] = useState ("");
+    const [showPassword, setShowPassword] = useState (false);
+
+    const viewPassword = () => setShowPassword(!showPassword);
 
     const checkEmptyFields = () => {
         if (!userName.trim() || !password.trim()) {
@@ -36,14 +36,22 @@ const Login = () => {
                 <div className='input-field'>
                     <label>
                         <input type="email" name='email' placeholder='Email' onChange={(e) => setUserName(e.target.value)} />
-                        <FaUser className='icon' />
+                        <FaUser className='icons' />
                     </label>
                 </div>
 
                 <div className='input-field'>
                     <label>
-                        <input type="password" name='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
-                        <FaLock className='icon' />
+                        <input type={showPassword ? "text": "password"} name='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
+                        <FaLock className='icons' />
+                        <button type='button' className='view-password' onClick={viewPassword}>
+
+                            {showPassword && <FaEye className='icon'/>}
+                            view password
+                            {!showPassword && <FaEyeSlash className='icon'/>}
+
+                        </button>
+                        
                     </label>
                 </div>
 
@@ -57,7 +65,7 @@ const Login = () => {
 
                 </div>
 
-                <button type='submit'>Submit</button>
+                <button type='submit'className='submit'>Submit</button>
 
                 <div className="signup-link">
                     <p>Don't have an account? <a href="#">Sign up</a> </p>

@@ -1,0 +1,98 @@
+.container{
+    width: 450px;
+    background-color: rgba(150, 150, 150, 0.15);
+    border-radius: 7%;
+    backdrop-filter: blur(15px); /* efeito de "vidro" */ 
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    padding: 40px;
+}
+
+.container h1{
+    text-align: center;
+    font-size: 35px;
+    color: rgb(24, 53, 84);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.container .input-field{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px auto;
+}
+
+.input-field input{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: aliceblue;
+    padding: 25px 45px;
+}
+
+.input-field input::placeholder{
+    color: aliceblue;
+}
+
+.input-field .icon{
+    position: absolute;
+    left: 25px;
+    top: 35%;
+    transform: translateX(-50%);
+    color: aliceblue;
+}
+
+.container .recall-forget{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -1px 0 25px;
+
+}
+
+.recall-forget label{
+    color: aliceblue;
+}
+
+.recall-forget input{
+    margin-right: 5px;
+}
+
+.recall-forget a, .signup-link a{
+    color: aliceblue;
+    text-decoration: none;
+}
+
+.recall-forget a:hover, .signup-link a:hover{
+    text-decoration: underline;
+}
+
+.container button{
+    width: 100%;
+    height: 50px;
+    background-color:  rgba(255, 255, 255, 0);
+    border: 2px solid  rgba(255, 255, 255, 0.2);
+    outline: none;
+    border-radius: 40px;
+    font-size: 16px;
+    color: aliceblue;
+}
+
+
+.container button:hover{
+    background-color: rgba(7, 72, 19, 0.2);
+}
+
+.container .signup-link{
+    font-family: 14px;
+    text-align: center;
+    margin: 20px 0 10px;
+}
+
+.signup-link{
+    color: aliceblue;
+}

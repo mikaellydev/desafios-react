@@ -5,17 +5,27 @@ import { useState } from 'react';
 import './Login.css';
 const Login = () => {
 
-    const [setUserName] =  useState ("");
-    const [setPassword] = useState ("");
+
+
+    const [userName,setUserName] =  useState ("");
+    const [password, setPassword] = useState ("");
+
+    const checkEmptyFields = () => {
+        if (!userName.trim() || !password.trim()) {
+            alert("Please fill in both fields before submitting!");
+            return false;
+        }
+        else{
+            return true;
+        }
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        alert("Your data has been successfully submitted!");
-    }
-
-
-
+        if(checkEmptyFields()){
+            alert("Your data has been successfully submitted!");
+        }
+    };
 
     return (
         <div className='container'>

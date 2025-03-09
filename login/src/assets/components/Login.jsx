@@ -1,12 +1,15 @@
 import {FaUser, FaLock, FaEye, FaEyeSlash} from 'react-icons/fa';
 
 import { useState } from 'react';
+import { useRef } from 'react';
 
 import './Login.css';
 const Login = () => {
     const [userName,setUserName] =  useState ("");
     const [password, setPassword] = useState ("");
     const [showPassword, setShowPassword] = useState (false);
+
+    const inputPasswordRef = useRef(null);
 
     const viewPassword = () => setShowPassword(!showPassword);
 
@@ -35,14 +38,18 @@ const Login = () => {
 
                 <div className='input-field'>
                     <label>
-                        <input type="email" name='email' placeholder='Email' onChange={(e) => setUserName(e.target.value)} />
+                        <input type="email" name='email' placeholder='Email' 
+                        onChange={(e) => setUserName(e.target.value)} 
+                        onKeyDown={(e) => e.key === 'Enter'? (e.preventDefault(), inputPasswordRef.current?.focus()) : undefined}/>
                         <FaUser className='icons' />
                     </label>
                 </div>
 
                 <div className='input-field'>
                     <label>
-                        <input type={showPassword ? "text": "password"} name='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
+                        <input type={showPassword ? "text": "password"} name='password' placeholder='Password' 
+                        ref={inputPasswordRef}
+                        onChange={(e) => setPassword(e.target.value)} />
                         <FaLock className='icons' />
                         <button type='button' className='view-password' onClick={viewPassword}>
 

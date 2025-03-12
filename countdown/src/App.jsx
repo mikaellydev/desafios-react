@@ -1,13 +1,12 @@
 import Title from './components/title';
 import Counter from './components/Counter';
-
-
 import './App.css';
 
+import NewYear from './assets/img-blue.jpg';
 
 function App() {
   return (
-    <div className='App'>
+    <div className='App' style={{backgroundImage: `url(${NewYear})` }}>
       <div className='Container'>
         <Title title={"Countdown to 2026"} />
         <div className='Countdown-container'>

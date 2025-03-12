@@ -1,4 +1,6 @@
 import Title from './components/title';
+import Counter from './components/Counter';
+
 
 import './App.css';
 
@@ -9,11 +11,14 @@ function App() {
       <div className='Container'>
         <Title title={"Countdown to 2026"} />
         <div className='Countdown-container'>
-          <p>2 days</p>
+          <Counter title="Days" number={2} />
+          <Counter title="Hours" number={2} />
+          <Counter title="Minutes" number={2} />
+          <Counter title="Seconds" number={2} />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

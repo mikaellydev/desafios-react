@@ -1,8 +1,18 @@
-import './App.css'
+import Title from './components/title';
+
+import './App.css';
+
 
 function App() {
   return (
-    <h1>Countdown</h1>
+    <div className='App'>
+      <div className='Container'>
+        <Title title={"Countdown to 2026"} />
+        <div className='Countdown-container'>
+          <p>2 days</p>
+        </div>
+      </div>
+    </div>
   )
 }
 

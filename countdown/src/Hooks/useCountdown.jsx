@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 const useCountdown = (date) => {
 
     const [day, setDay] = useState()

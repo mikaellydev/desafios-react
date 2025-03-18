@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { useRef } from 'react';
 
 import './Login.css';
+
 const Login = () => {
     const [userName,setUserName] =  useState ("");
     const [password, setPassword] = useState ("");
     const [showPassword, setShowPassword] = useState (false);
-
     const inputPasswordRef = useRef(null);
 
     const viewPassword = () => setShowPassword(!showPassword);
@@ -51,7 +51,8 @@ const Login = () => {
                         ref={inputPasswordRef}
                         onChange={(e) => setPassword(e.target.value)} />
                         <FaLock className='icons' />
-                        <button type='button' className='view-password' onClick={viewPassword}>
+                        <button 
+                        type='button' className='view-password' onClick={viewPassword}>
 
                             {showPassword && <FaEye className='icon'/>}
                             view password

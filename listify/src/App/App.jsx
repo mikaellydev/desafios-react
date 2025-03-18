@@ -1,8 +1,12 @@
+import Login from '../Pages/Login/Login'
 import './App.css'
+import AppRoutes from '../Routes/AppRoutes'
 
 function App() {
   return (
-      <h1>Hello</h1>
+      <div className='App'>
+        <AppRoutes/>
+      </div>
   )
 }
 

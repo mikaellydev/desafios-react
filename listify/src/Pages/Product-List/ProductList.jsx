@@ -1,24 +1,24 @@
 import { useNavigate } from "react-router-dom";
+import ListClient from "../../components/listClients/ListClient";
 
+import './ProductList.css';
 
-function ProductList () {
+function ProductList() {
+    const navigate = useNavigate();
+    const back = () => {
+        navigate("/");
+    };
 
-const navigate = useNavigate ()
-
-const back = () => {
-    navigate("/")
-}
-
-    return(
+    return (
         <div>
-            <h1>Lista de produtos</h1>
+            <ListClient />
 
             <button onClick={back}>
-                Voltar
+                Exit
             </button>
         </div>
 
-        
+
     );
 };
 

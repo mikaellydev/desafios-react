@@ -21,7 +21,7 @@ function Login() {
         }
     };
 
-    const nao = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault()
         if (isFormValid()) {
             navigate("/product-list")
@@ -31,7 +31,7 @@ function Login() {
         <div className="login-box">
             <div>
                 <h1>Welcome Login</h1>
-                <form className="form" onSubmit={nao}>
+                <form className="form" onSubmit={handleSubmit}>
                     <div className="login">
                         <label>
                             <input

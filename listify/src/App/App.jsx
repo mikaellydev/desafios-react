@@ -1,12 +1,15 @@
-import Login from '../Pages/Login/Login'
 import './App.css'
 import AppRoutes from '../Routes/AppRoutes'
+import { Provider } from 'react-redux'
+import { store } from '../Redux/store'
 
 function App() {
   return (
-      <div className='App'>
+    <Provider store={store}>
+            <div className='App'>
         <AppRoutes/>
       </div>
+    </Provider>
   )
 }
 

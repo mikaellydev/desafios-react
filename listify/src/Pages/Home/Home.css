@@ -1,0 +1,65 @@
+.user-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #226ac9;
+  color: white;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-icon {
+  color: white;
+}
+
+.user-details h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.user-details p {
+  margin: 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.exit-button {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.exit-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.tabs-container {
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.tabs-container .MuiTab-root {
+  color: #226ac9;
+  font-weight: bold;
+}
+
+.content-container {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: white;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+

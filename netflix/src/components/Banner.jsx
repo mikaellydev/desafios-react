@@ -3,6 +3,7 @@ import categories, { getMovies } from "../api";
 import "../components/Banner.css";
 
 function Banner() {
+  
   const [movie, setMovie] = React.useState({});
 
   const fetchRandomMovie = async () => {

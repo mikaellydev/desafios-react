@@ -1,0 +1,64 @@
+.clients-container {
+    padding: 20px;
+   
+  }
+  
+  .clients-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .clients-header h1 {
+    font-size: 24px;
+    color: #226ac9;
+  }
+  
+  .add-client-button {
+    background-color: #226ac9;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .add-client-button:hover {
+    background-color: #226ac9;
+  }
+  
+  .clients-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .clients-table th,
+  .clients-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .clients-table th {
+    background-color: #226ac9;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .clients-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .action-buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+    color: #226ac9;
+  }
+  
+  .action-buttons button:hover {
+    color: #226ac9;
+  }

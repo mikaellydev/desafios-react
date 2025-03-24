@@ -4,13 +4,13 @@ import './index.css';
 import App from './App/App.jsx';
 
 const initialClients = [
-  { id: 1, name: "Marcio Pereira Alvez", email: "marcio12pereira@gmail.com", telephone: "(27) 992617-114" },
-  { id: 2, name: "Mariana Silva", email: "mariana.silva@example.com", telephone: "(27) 992017-122" },
+  { id: 1, name: "Marcio Pereira Alvez", email: "marcio12pereira@gmail.com", telephone: 27992617114 },
+  { id: 2, name: "Mariana Silva", email: "mariana.silva@example.com", telephone: 27992017122 },
 ];
 
 const initialProducts = [
-  { id: 1, name: "Smartwatch Pro", stock: 50, price: "$159.99" },
-  { id: 2, name: "10'' Tablet 128GB", stock: 20, price: "$299.99" },
+  { id: 1, name: "Smartwatch Pro", stock: 50, price: 160},
+  { id: 2, name: "10'' Tablet 128GB", stock: 20, price: 300 },
 ];
 
 if (!localStorage.getItem('clients')) {

@@ -12,25 +12,21 @@ function FormAdd({ type, onAdd, onClose, open }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-   
     if (type === 'client' && !/\S+@\S+\.\S+/.test(email)) {
       alert('Please enter a valid email address.');
       return;
     }
 
-    
     if (type === 'client' && !/^\d{10,}$/.test(telephone)) {
       alert('Please enter a valid phone number (only numbers, at least 10 digits).');
       return;
     }
 
-    
     if (type === 'product' && (isNaN(stock) || stock < 0)) {
       alert('Please enter a valid stock value (positive number).');
       return;
     }
 
-    
     if (type === 'product' && (isNaN(price) || price < 0)) {
       alert('Please enter a valid price value (positive number).');
       return;
@@ -42,11 +38,20 @@ function FormAdd({ type, onAdd, onClose, open }) {
       ...(type === 'client' && { email, telephone }),
       ...(type === 'product' && { stock, price }),
     };
+
     onAdd(newItem);
+
     onClose();
+    
+    setName('');
+    setEmail('');
+    setTelephone('');
+    setStock('');
+    setPrice('');
+
+    
   };
 
-  
   const handleTelephoneChange = (e) => {
     const value = e.target.value.replace(/\D/g, ''); 
     setTelephone(value);

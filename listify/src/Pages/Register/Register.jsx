@@ -6,18 +6,22 @@ import { registerSuccess } from "../../Redux/Slices/authSlice";
 import '../Register/Register.css';
 
 function Register() {
+    // estados para os campos do formulário
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+
+    const dispatch = useDispatch(); // hook do redux para disparar as actions
+    const navigate = useNavigate(); // hook para navegação
 
     const handleSubmit = (event) => {
-        event.preventDefault();
+        event.preventDefault(); // previne recarregar a página
 
+        // obtém usuários existentes ou um array vazio
         const users = JSON.parse(localStorage.getItem('users')) || [];
+        // verifica se o email ja está cadastrado
         const emailExists = users.some(user => user.email === email);
 
         if (emailExists) {
@@ -25,17 +29,24 @@ function Register() {
             return;
         }
 
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            alert('Please enter a valid email address');
+            return;
+        }
+
+        // cria um novo usuário
         const user = { firstName, lastName, email, password };
+
+        // adiciona o novo usuário ao array
         users.push(user);
         localStorage.setItem('users', JSON.stringify(users));
 
-        dispatch(registerSuccess(user));
-        navigate("/");
+        dispatch(registerSuccess(user)); // dispara a action de registro bem sucedido
     };
 
     
     const handleLoginClick = () => {
-        navigate("/");
+        navigate("/"); // navega para página de login
     };
 
     return (

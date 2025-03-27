@@ -1,28 +1,30 @@
-import React, { useState } from 'react';
-import { Tabs, Tab, Box } from '@mui/material';
+import React from 'react';
+import { Tabs, Tab, Box } from '@mui/material'; 
+import { useDispatch, useSelector } from 'react-redux'; // hooks do redux
+import { FaUser } from 'react-icons/fa'; 
 import Clients from '../../components/Clients/Clients';
 import Products from '../../components/Products/Products';
-import { useNavigate } from 'react-router-dom';
-import { FaUser } from 'react-icons/fa'; 
 import LogoutConfirmModal from '../../components/Modal/LogoutConfirmModal'; 
+import { toggleLogoutModal } from '../../Redux/Slices/modalSlice';
 import "../Home/Home.css";
 
 function Home() {
-  const navigate = useNavigate();
-  const [tabValue, setTabValue] = useState(0);
-  const [logoutModalOpen, setLogoutModalOpen] = useState(false); 
+  const dispatch = useDispatch(); // hook para disparar ações do redux
 
-  const user = JSON.parse(localStorage.getItem('user')); 
-  const userEmail = user ? user.email : ''; 
+  const [tabValue, setTabValue] = React.useState(0); // controla qual aba estará ativa (0 para clientes / 1 para produtos)
+  
+  // acessa os dados do usuário do redux store
+  const { user } = useSelector(state => state.auth);
+  const userEmail = user ? user.email : '';
 
+  // atualiza a aba selecionada
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
   };
 
-  const handleLogoutConfirm = () => {
-    localStorage.removeItem('user'); 
-    setLogoutModalOpen(false);
-    navigate('/');
+  // dispara a action para mostrar o modal de logout
+  const handleLogoutClick = () => {
+    dispatch(toggleLogoutModal());
   };
 
   return (
@@ -37,18 +39,13 @@ function Home() {
         </div>
         <button 
           className="exit-button" 
-          onClick={() => setLogoutModalOpen(true)} 
+          onClick={handleLogoutClick}
         >
           Logout
         </button>
       </nav>
 
-      
-      <LogoutConfirmModal
-        open={logoutModalOpen}
-        onClose={() => setLogoutModalOpen(false)}
-        onConfirm={handleLogoutConfirm}
-      />
+      <LogoutConfirmModal />
 
       <Box sx={{ borderBottom: 1, borderColor: 'white' }} className="tabs-container">
         <Tabs value={tabValue} onChange={handleTabChange} centered>

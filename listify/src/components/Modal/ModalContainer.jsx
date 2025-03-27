@@ -15,7 +15,9 @@ const style = {
   textAlign: 'center', 
 };
 
-function ModalContainer({ open, onClose, children }) {
+// componente é um container container reutilizável para modais 
+
+function ModalContainer({ open, onClose, children }) { 
   return (
     <Modal open={open} onClose={onClose}>
       <Box sx={style}>

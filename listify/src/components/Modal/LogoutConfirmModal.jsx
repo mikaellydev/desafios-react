@@ -1,5 +1,8 @@
 import React from 'react';
 import { Modal, Box, Button, Typography } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleLogoutModal } from '../../Redux/Slices/modalSlice';
+import { logout } from '../../Redux/Slices/authSlice';
 
 const style = {
   position: 'absolute',
@@ -14,18 +17,36 @@ const style = {
   textAlign: 'center',
 };
 
-function LogoutConfirmModal({ open, onClose, onConfirm }) {
+function LogoutConfirmModal() {
+  const dispatch = useDispatch(); // enviar as ações para o redux
+  const showLogoutModal = useSelector(state => state.modal.showLogoutModal); // acessa o estado de visibilidade do modal logout
+
+  const handleClose = () => {
+    dispatch(toggleLogoutModal()); // altera a visibilidade do modal
+  };
+
+  const handleConfirm = () => {
+    dispatch(logout()); // dispara a ação logout
+    handleClose(); // fecha o modal
+  };
+
   return (
-    <Modal open={open} onClose={onClose}>
+    <Modal open={showLogoutModal} onClose={handleClose}>
       <Box sx={style}>
         <Typography variant="h6" gutterBottom>
           Are you sure you want to logout?
         </Typography>
         <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 3 }}>
-          <Button variant="contained" color="error" onClick={onConfirm}>
-            Yes, Logout
+          <Button 
+            variant="contained" 
+            color="error" 
+            onClick={handleConfirm}
+          >
           </Button>
-          <Button variant="outlined" onClick={onClose}>
+          <Button 
+            variant="outlined" 
+            onClick={handleClose}
+          >
             Cancel
           </Button>
         </Box>

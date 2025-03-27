@@ -1,7 +1,6 @@
 import React from 'react';
 import { FaUser, FaEdit, FaTrash, FaUserPlus} from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { addClient, editClient, deleteClient } from '../../Redux/Slices/clientSlice';
 import {
   toggleAddClientModal,
   toggleEditClientModal,
@@ -18,29 +17,14 @@ import ConfirmDelete from '../Modal/ConfirmDelete';
 import '../Clients/Clients.css';
 
 function Clients() {
-  const dispatch = useDispatch();
-  const clients = useSelector(state => state.client.clients);
+  const dispatch = useDispatch(); // hook do redux
+
+  const clients = useSelector(state => state.client.clients); // hook que acessa os estados dos modais e o item a ser editado
   const {
     showAddClientModal,
     showEditClientModal,
-    showDeleteClientModal,
     itemToEdit,
   } = useSelector(state => state.modal);
-
-  const handleAddClient = (newClient) => {
-    dispatch(addClient(newClient));
-    dispatch(toggleAddClientModal());
-  };
-
-  const handleEditClient = (updatedClient) => {
-    dispatch(editClient(updatedClient));
-    dispatch(toggleEditClientModal());
-  };
-
-  const handleDeleteClient = (id) => {
-    dispatch(deleteClient(id));
-    dispatch(toggleDeleteClientModal());
-  };
 
   return (
     <div className="clients-container">
@@ -53,7 +37,6 @@ function Clients() {
 
       <FormAdd
         type="client"
-        onAdd={handleAddClient}
         onClose={() => dispatch(toggleAddClientModal())}
         open={showAddClientModal}
       />
@@ -61,17 +44,11 @@ function Clients() {
       <FormEdit
         type="client"
         itemToEdit={itemToEdit} 
-        onEdit={handleEditClient}
         onClose={() => dispatch(toggleEditClientModal())}
         open={showEditClientModal}
       />
 
-      <ConfirmDelete
-        type="client"
-        onDelete={() => handleDeleteClient(itemToEdit.id)}
-        onClose={() => dispatch(toggleDeleteClientModal())}
-        open={showDeleteClientModal}
-      />
+      <ConfirmDelete />
 
       <Table className="clients-table">
         <thead>

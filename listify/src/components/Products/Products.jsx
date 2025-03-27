@@ -1,12 +1,11 @@
 import React from 'react';
 import { FaBox, FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProduct, editProduct, deleteProduct } from '../../Redux/Slices/productSlice';
-import {
+import { 
   toggleAddProductModal,
   toggleEditProductModal,
   toggleDeleteProductModal,
-  setItemToEdit,
+  setItemToEdit
 } from '../../Redux/Slices/modalSlice';
 
 import Table from 'react-bootstrap/Table';
@@ -18,29 +17,14 @@ import ConfirmDelete from '../Modal/ConfirmDelete';
 import '../Products/Products.css';
 
 function Products() {
-  const dispatch = useDispatch();
-  const products = useSelector(state => state.product.products);
+  const dispatch = useDispatch(); // hook do redux para disparar as actions 
+
+  const products = useSelector(state => state.product.products); // acessa a lsita de produtos 
   const {
     showAddProductModal,
     showEditProductModal,
-    showDeleteProductModal,
     itemToEdit,
-  } = useSelector(state => state.modal);
-
-  const handleAddProduct = (newProduct) => {
-    dispatch(addProduct(newProduct));
-    dispatch(toggleAddProductModal());
-  };
-
-  const handleEditProduct = (updatedProduct) => {
-    dispatch(editProduct(updatedProduct));
-    dispatch(toggleEditProductModal());
-  };
-
-  const handleDeleteProduct = (id) => {
-    dispatch(deleteProduct(id));
-    dispatch(toggleDeleteProductModal());
-  };
+  } = useSelector(state => state.modal); // acessa a vibilidade dos modais e o item a ser editado
 
   return (
     <div className="products-container">
@@ -53,7 +37,6 @@ function Products() {
 
       <FormAdd
         type="product"
-        onAdd={handleAddProduct}
         onClose={() => dispatch(toggleAddProductModal())}
         open={showAddProductModal} 
       />
@@ -61,17 +44,11 @@ function Products() {
       <FormEdit
         type="product"
         itemToEdit={itemToEdit}
-        onEdit={handleEditProduct}
         onClose={() => dispatch(toggleEditProductModal())}
         open={showEditProductModal} 
       />
 
-      <ConfirmDelete
-        type="product"
-        onDelete={() => handleDeleteProduct(itemToEdit.id)}
-        onClose={() => dispatch(toggleDeleteProductModal())}
-        open={showDeleteProductModal} 
-      />
+      <ConfirmDelete />
 
       <Table className="products-table">
         <thead>

@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// controla a visibilidade de cada modal
 const initialState = {
   showAddClientModal: false,
   showEditClientModal: false,
@@ -7,9 +8,11 @@ const initialState = {
   showAddProductModal: false,
   showEditProductModal: false,
   showDeleteProductModal: false,
-  itemToEdit: null, 
+  showLogoutModal: false,
+  itemToEdit: null, // armazena o item que será editado ou excluído
 };
 
+// altera o estado de visualização dos modais
 const modalSlice = createSlice({
   name: 'modal',
   initialState,
@@ -20,7 +23,7 @@ const modalSlice = createSlice({
     toggleEditClientModal(state) {
       state.showEditClientModal = !state.showEditClientModal;
       if (!state.showEditClientModal) {
-        state.itemToEdit = null; 
+        state.itemToEdit = null; // limpa o itemToEdit
       }
     },
     toggleDeleteClientModal(state) {
@@ -45,16 +48,19 @@ const modalSlice = createSlice({
       }
     },
     setItemToEdit(state, action) {
-      if (action.payload) {
-        state.itemToEdit = action.payload; 
-      }
+      state.itemToEdit = action.payload; // armazena o item que será editado ou excluido
     },
     clearItemToEdit(state) {
-      state.itemToEdit = null; 
+      state.itemToEdit = null; // limpa a refência do item
+    },
+    toggleLogoutModal(state) {
+      state.showLogoutModal = !state.showLogoutModal;
     },
   },
 });
 
+
+// Exporta todas as actions para serem usadas nos componentes
 export const {
   toggleAddClientModal,
   toggleEditClientModal,
@@ -63,7 +69,8 @@ export const {
   toggleEditProductModal,
   toggleDeleteProductModal,
   setItemToEdit,
-  clearItemToEdit, 
+  clearItemToEdit,
+  toggleLogoutModal,
 } = modalSlice.actions;
 
 export default modalSlice.reducer;
